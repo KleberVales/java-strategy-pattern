@@ -100,3 +100,4 @@ public class ShoppingCart {
     }
 }
 ```
+4. Classe auxiliar Item
