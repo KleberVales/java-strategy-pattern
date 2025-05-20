@@ -66,3 +66,4 @@ public class BankTransferPayment implements PaymentStrategy {
     }
 }
 ```
+3. Contexto que usa a Strategy
