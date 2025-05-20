@@ -121,3 +121,36 @@ public class Item {
     }
 }
 ```
+5. Classe Main para demonstrar o padrão
+```
+// Main.java
+public class Main {
+    public static void main(String[] args) {
+        ShoppingCart cart = new ShoppingCart();
+        
+        Item item1 = new Item("1234", 100.50);
+        Item item2 = new Item("5678", 50.25);
+        
+        cart.addItem(item1);
+        cart.addItem(item2);
+        
+        // Pagamento com cartão de crédito
+        cart.setPaymentStrategy(new CreditCardPayment("João Silva", "1234567890123456", "123", "12/25"));
+        cart.checkout();
+        
+        // Adiciona itens novamente para demonstrar outra estratégia
+        cart.addItem(new Item("9012", 75.99));
+        
+        // Pagamento com PayPal
+        cart.setPaymentStrategy(new PayPalPayment("joao@example.com", "mypwd"));
+        cart.checkout();
+        
+        // Adiciona itens novamente para demonstrar outra estratégia
+        cart.addItem(new Item("3456", 120.00));
+        
+        // Pagamento com transferência bancária
+        cart.setPaymentStrategy(new BankTransferPayment("987654321", "001"));
+        cart.checkout();
+    }
+}
+```
