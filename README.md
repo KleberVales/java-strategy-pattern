@@ -10,3 +10,4 @@ public interface PaymentStrategy {
     void pay(double amount);
 }
 ```
+2. Implementações Concretas (Estratégias)
