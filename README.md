@@ -66,4 +66,37 @@ public class BankTransferPayment implements PaymentStrategy {
     }
 }
 ```
-3. Contexto que usa a Strategy
+3. Contexto que usa a Strategy3
+```
+// ShoppingCart.java
+public class ShoppingCart {
+    private List<Item> items;
+    private PaymentStrategy paymentStrategy;
+    
+    public ShoppingCart() {
+        this.items = new ArrayList<>();
+    }
+    
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+    
+    public double calculateTotal() {
+        return items.stream().mapToDouble(Item::getPrice).sum();
+    }
+    
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+    
+    public void checkout() {
+        double total = calculateTotal();
+        paymentStrategy.pay(total);
+        items.clear();
+    }
+}
+```
